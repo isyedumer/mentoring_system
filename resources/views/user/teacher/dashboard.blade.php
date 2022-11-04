@@ -1,5 +1,6 @@
 @extends('user.layout')
 
+@section('title', 'Dashboard')
 @section('breadcrumbs')
     <div class="breadcrumb-bar">
         <div class="container-fluid">

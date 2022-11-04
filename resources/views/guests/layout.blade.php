@@ -31,6 +31,9 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ 'assets/user/css/style.css' }}">
     <link rel="stylesheet" href="{{ 'assets/user/css/user.css' }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -133,7 +136,7 @@
                         <ul class="nav header-navbar-rht">
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link header-login-two" href="{{ route('login.get') }}">Login</a>
+                                    <a class="nav-link header-login-two" href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link header-login" href="register.html">Sign up</a>
@@ -146,7 +149,8 @@
                                 <li class="nav-item">
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <a class="nav-link header-login"><button class="nav-link-btn text-white" type="submit">Log out</button></a>
+                                        <a class="nav-link header-login"><button class="nav-link-btn text-white"
+                                                type="submit">Log out</button></a>
                                     </form>
                                 </li>
                             @endauth
@@ -329,6 +333,21 @@
 
     <!-- CusTina JS -->
     <script src="{{ 'assets/user/js/script.js' }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        @if (Session::has('type'))
+            @if (session('type') == 'success')
+                toastr.success(@json(session('message')))
+            @elseif (session('type') == 'error')
+                toastr.error(@json(session('message')))
+            @elseif (session('type') == 'warning')
+                toastr.warning(@json(session('message')))
+            @endif
+        @endif
+    </script>
 
     @yield('scripts')
 </body>

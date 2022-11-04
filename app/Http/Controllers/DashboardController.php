@@ -10,6 +10,7 @@ class DashboardController extends Controller
     {
         $user = request()->user();
         if ($user->role->type == 'super_admin') {
+            return view('admin.dashboard');
         } elseif ($user->role->type == 'teacher') {
             return view('user.teacher.dashboard');
         } elseif ($user->role->type == 'student') {

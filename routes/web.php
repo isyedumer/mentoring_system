@@ -24,8 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware(['guest', 'prevent.history'])->group(function(){
-    Route::get('/login', [AuthController::class, 'login'])->name('login.get');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
+    Route::get('/signup', [AuthController::class, 'register'])->name('register');
+    Route::post('/signup', [AuthController::class, 'registerPost'])->name('register.post');
 });
 
 Route::middleware(['auth', 'prevent.history'])->group(function() {
