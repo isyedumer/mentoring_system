@@ -19,13 +19,21 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->with(['message' => $validator->errors()->first()]);
         }
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials)) {
             return redirect()->back()->with(['message' => 'Invalid email or password']);
         }
+        return redirect(route('dashboard'));
+    }
 
+    public function logOut(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }

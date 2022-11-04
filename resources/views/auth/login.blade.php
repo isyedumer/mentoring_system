@@ -3,7 +3,7 @@
 	<head>
 
 		<meta charset="utf-8">
-		<title>Login</title>
+		<title>Login - Mentoring system</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
 		<!-- Favicon -->
@@ -38,7 +38,8 @@
 									{{-- <h3>Login <span>Mentor.COM</span></h3> --}}
 									<p class="text-muted">Access to our dashboard</p>
 								</div>
-								<form action="{{ route('login.post') }}">
+								<form method="POST" action="{{ route('login.post') }}">
+                                    @csrf
 									<div class="form-group">
 										<label class="form-control-label">Email Address</label>
 										<input type="email" class="form-control" name="email">
