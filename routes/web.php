@@ -38,4 +38,8 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
         Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
     });
 
+    Route::middleware(['can:verify_role,"student"'])->group(function() {
+        Route::get('/appointments', [HomeController::class, 'appointments'])->name('appointments');
+    });
+
 });

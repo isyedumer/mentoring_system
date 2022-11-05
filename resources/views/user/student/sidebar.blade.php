@@ -24,9 +24,9 @@
         <ul>
             <li><a href="dashboard-mentee.html" class="active"><i class="fas fa-home"></i>Dashboard
                     <span><i class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="bookings-mentee.html"><i class="fas fa-clock"></i>Requests<span><i
+            <li><a href="{{ route('appointments') }}"><i class="fas fa-clock"></i>Requests<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="bookings-mentee.html"><i class="fas fa-clock"></i>Book an Appointment<span><i
+            <li><a href="{{ route('appointments') }}""><i class="fas fa-clock"></i>Book an Appointment<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
             <li><a href="profile-mentee.html"><i class="fas fa-user-cog"></i>Profile <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
