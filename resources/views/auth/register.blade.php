@@ -19,6 +19,7 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -86,14 +87,16 @@
                                         <label class="form-control-label">Gender</label>
                                         <select class="form-select" name="gender">
                                             <option value>Select gender</option>
-                                            <option value="M" {{ old('gender') == "M" ? 'selected' : '' }}>Male</option>
-                                            <option value="F"{{ old('gender') == "F" ? 'selected' : '' }}>Female</option>
+                                            <option value="M" {{ old('gender') == 'M' ? 'selected' : '' }}>Male
+                                            </option>
+                                            <option value="F"{{ old('gender') == 'F' ? 'selected' : '' }}>Female
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="form-control-label">Select type to be applied</label>
-                                            <select class="form-select" name="role_id">
+                                            <select class="form-select" name="role_id" id="role">
                                                 <option value>Select type</option>
                                                 @foreach ($roles as $role)
                                                     <option value="{{ $role->id }}"
@@ -103,13 +106,25 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-lg-12" id="teacher_col" style="display:{{ old('role_id') == 2 ? 'block' : 'none' }};">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Select courses you want to
+                                                teach</label>
+                                            <select class="form-select" name="courses[]" id="courses" multiple>
+                                                @foreach ($courses as $course)
+                                                    <option value="{{ $course->id }}">
+                                                        {{ $course->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check form-check-xs custom-checkbox">
                                         <input type="checkbox" class="form-check-input" name="agreeCheckboxUser"
                                             id="agree_checkbox_user">
-                                        <label class="form-check-label" for="agree_checkbox_user">I agree to </label> <a
-                                            tabindex="-1" href="javascript:void(0);">Privacy Policy</a> &amp; <a
+                                        <label class="form-check-label" for="agree_checkbox_user">I agree to </label>
+                                        <a tabindex="-1" href="javascript:void(0);">Privacy Policy</a> &amp; <a
                                             tabindex="-1" href="javascript:void(0);"> Terms.</a>
                                     </div>
                                 </div>
@@ -142,12 +157,23 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/user/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
+        $("#courses").select2({
+            width: '100%'
+        });
+        role.addEventListener('change', function() {
+            if (this.value == 2) {
+                teacher_col.style.display = 'block';
+            } else {
+                teacher_col.style.display = 'none';
+            }
+        })
         @if (Session::has('type'))
             @if (session('type') == 'success')
                 toastr.success(@json(session('message')))

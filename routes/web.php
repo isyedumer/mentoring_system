@@ -34,6 +34,8 @@ Route::middleware(['guest', 'prevent.history'])->group(function(){
 Route::middleware(['auth', 'prevent.history'])->group(function() {
     Route::post('/logout', [AuthController::class, 'logOut'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
+    Route::middleware(['can:verify_role,"teacher"'])->group(function() {
+        Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
+    });
 
 });

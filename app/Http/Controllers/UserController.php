@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function coursesToTeach()
+    public function coursesToTeach(Request $request)
     {
-        $courses = Course::paginate(10);
+        $courses = $request->user()->courses()->paginate(10);
         return view('user.teacher.courses', compact('courses'));
     }
 }

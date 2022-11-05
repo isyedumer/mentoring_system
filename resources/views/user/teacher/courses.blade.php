@@ -47,7 +47,7 @@
                                                 <th class="text-center">Title</th>
                                                 <th class="text-center">Description</th>
                                                 <th class="text-center">Image</th>
-                                                <th class="text-center">Action</th>
+                                                {{-- <th class="text-center">Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,10 +68,10 @@
                                                     <td class="text-center">
                                                         <img src="{{ $course->image }}" width="50" height="50" />
                                                     </td>
-                                                    <td class="text-center"><a href="profile.html"
+                                                    {{-- <td class="text-center"><a href="profile.html"
                                                             class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
                                                             View</a>
-                                                    </td>
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
                                         </tbody>
