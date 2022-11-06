@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('student_active', 'active')
+@section('teacher_active', 'active')
 
 @section('content')
     <div class="page-wrapper">
