@@ -41,7 +41,7 @@
                         <div class="card-body">
 
                             <!-- Profile Settings Form -->
-                            <form method="POST" action="{{ route('teacher.profile.update', $user->id) }}">
+                            <form method="POST" action="{{ route('teacher.profile.update', $user->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row form-row">
                                     <div class="col-12 col-md-12">
@@ -163,13 +163,13 @@
                                         <div class="form-group">
                                             <label>Country</label>
                                             <select class="form-select" name="country">
-                                                <option value="USA" {{ $user?->additional?->country == 'USA' }}>USA
+                                                <option value="USA" {{ $user?->additional?->country == 'USA' ? 'selected' :  ''}}>USA
                                                 </option>
-                                                <option value="UK" {{ $user?->additional?->country == 'UK' }}>UK
+                                                <option value="UK" {{ $user?->additional?->country == 'UK' ? 'selected' :  '' }}>UK
                                                 </option>
-                                                <option value="India" {{ $user?->additional?->country == 'India' }}>India
+                                                <option value="India" {{ $user?->additional?->country == 'India' ? 'selected' :  '' }}>India
                                                 </option>
-                                                <option value="Pakistan" {{ $user?->additional?->country == 'Pakistan' }}>
+                                                <option value="Pakistan" {{ $user?->additional?->country == 'Pakistan' ? 'selected' :  '' }}>
                                                     Pakistan</option>
                                             </select>
                                         </div>

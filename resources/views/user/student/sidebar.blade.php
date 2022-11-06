@@ -10,7 +10,7 @@
         </div> --}}
         <div class="user-info-cont">
             <h4 class="usr-name">{{ auth()->user()->name }}</h4>
-            {{-- <p class="mentor-type">English Literature (M.A)</p> --}}
+            <p class="mentor-type">{{ auth()->user()?->additional?->headline }}</p>
         </div>
     </div>
     {{-- <div class="progress-bar-custom">
@@ -26,7 +26,7 @@
                     <span><i class="fas fa-chevron-right"></i></span></a></li>
             <li><a href="{{ route('appointments') }}"><i class="fas fa-clock"></i>Appointments<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('appointments') }}""><i class="fas fa-clock"></i>Book an Appointment<span><i
+            <li><a href="{{ route('appointments.book') }}""><i class="fas fa-clock"></i>Book an Appointment<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
             <li><a href="{{ route('student.profile', auth()->user()->id) }}"><i class="fas fa-user-cog"></i>Profile <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
