@@ -80,6 +80,7 @@ class AuthController extends Controller
                 'gender' => $request->gender,
                 'role_id' => $request->role_id,
             ]);
+            $user->additional()->create();
             $user->courses()->sync($request->courses);
             DB::commit();
             return redirect(route('login'))->with(['type' => 'success', 'message' => 'Your request has been submitted! You will be able to login to system once your account will be approved!']);

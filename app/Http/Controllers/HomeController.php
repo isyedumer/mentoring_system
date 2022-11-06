@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class HomeController extends Controller
         return view('guests.home');
     }
 
-    public function appointments(Request $request)
+    public function bookAppointment(Request $request)
     {
         $teacherCourse = TeacherCourse::query();
         $teacherCourse->when($request->get('q'), function($q) use($request) {
@@ -25,8 +26,13 @@ class HomeController extends Controller
                 });
             });
         });
-        $appointments = $teacherCourse->paginate(10);
-        return $appointments;
-        return view('user.student.appointments', compact('appointments'));
+        $results = $teacherCourse->paginate(10);
+        return view('user.student.results', compact('results'));
+    }
+
+    public function courses()
+    {
+        $courses = Course::all();
+        return view('admin.courses', compact('courses'));
     }
 }

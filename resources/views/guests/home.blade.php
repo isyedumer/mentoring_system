@@ -14,13 +14,13 @@
                         </div>
                         <!-- Search -->
                         <div class="search-box ">
-                            <form action="search.html">
+                            <form action="{{ route('appointments') }}">
                                 <div class="form-group search-info location-search ">
-                                    <input type="text" class="form-control text-truncate"
+                                    <input type="text" class="form-control text-truncate" name="q"
                                         placeholder=" Search School, Online educational centers, etc">
-                                    <a href="search.html"
+                                    <button type="submit"
                                         class="btn bg-search search-btn align-items-center d-flex justify-content-center"><i
-                                            class="fa fa-search" aria-hidden="true"></i></a>
+                                            class="fa fa-search" aria-hidden="true"></i></button>
                                 </div>
                             </form>
                         </div>

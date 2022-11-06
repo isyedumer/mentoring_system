@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('\App\Models\Course', 'teacher_courses', 'user_id', 'course_id')->withTimestamps()->using(TeacherCourse::class);
     }
+
+    public function additional()
+    {
+        return $this->hasOne('\App\Models\UserAdditional', 'user_id');
+    }
 }

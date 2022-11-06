@@ -28,7 +28,7 @@
                             class="fas fa-chevron-right"></i></span></a></li>
             <li><a href="bookings.html"><i class="fas fa-clock"></i>Appointments <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="profile.html"><i class="fas fa-user-cog"></i>Profile <span><i
+            <li><a href="{{ route('teacher.profile', auth()->user()->id) }}"><i class="fas fa-user-cog"></i>Profile <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
         </ul>
     </div>
