@@ -47,7 +47,7 @@
                                         <div class="form-group">
                                             <div class="change-avatar">
                                                 <div class="profile-img">
-                                                    {{ $user?->additional?->profile_image ? '<img src="' . $user?->additional?->profile_image . '" />' : 'N/A' }}
+                                                    <img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : '' }}" width="100" height="100" />
                                                 </div>
                                                 <div class="upload-img">
                                                     <div class="change-photo-btn">

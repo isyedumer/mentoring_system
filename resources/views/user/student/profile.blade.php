@@ -32,7 +32,7 @@
                             <div class="mentor-widget">
                                 <div class="user-info-left align-items-center">
                                     <div class="mentor-img d-flex flex-wrap justify-content-center">
-                                        <div class="pro-avatar">{{ $user?->additional?->profile_image ? '<img src="' . $user?->additional?->profile_image .'" />' : 'N/A' }}</div>
+                                        <div class="pro-avatar"><img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : '' }}" width="100" height="100" /></div>
                                         <div class="rating text-center">
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star filled"></i>

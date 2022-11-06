@@ -1,6 +1,6 @@
 <div class="profile-sidebar">
     <div class="user-widget">
-        <div class="pro-avatar">T</div>
+        <div class="pro-avatar"><img src="{{ auth()->user()?->additional?->profile_image }}" width="100" height="100" /></div>
         {{-- <div class="rating">
             <i class="fas fa-star filled"></i>
             <i class="fas fa-star filled"></i>
