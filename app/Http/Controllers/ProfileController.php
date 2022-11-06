@@ -40,9 +40,8 @@ class ProfileController extends Controller
             if ($request->hasFile('image')) {
                 $uploaded = $request->file('image');
                 $imagename = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
-                $imagepath = public_path('images/');
-                $uploaded->move($imagepath, $imagename);
-                $url = url("/images/" . $imagename);
+                $uploaded->storeAs('files', $imagename, 'public');
+                $url = url("/storage/images/" . $imagename);
                 $request['profile_image'] = $url;
             }
             $user->additional()->updateOrCreate([
@@ -65,9 +64,8 @@ class ProfileController extends Controller
             if ($request->hasFile('image')) {
                 $uploaded = $request->file('image');
                 $imagename = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
-                $imagepath = public_path('images/');
-                $uploaded->move($imagepath, $imagename);
-                $url = url("/images/" . $imagename);
+                $uploaded->storeAs('files', $imagename, 'public');
+                $url = url("storage/images/" . $imagename);
                 $request['profile_image'] = $url;
             }
             $user->additional()->updateOrCreate([

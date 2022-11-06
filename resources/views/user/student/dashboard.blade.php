@@ -98,7 +98,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($teachers as $teacher)
+                                                @if ($teachers->isEmpty())
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No data available in the
+                                                            table
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @foreach ($teachers->unique('teacher_id') as $teacher)
                                                     <tr>
                                                         <td class="text-center">
                                                             <h2 class="table-avatar">

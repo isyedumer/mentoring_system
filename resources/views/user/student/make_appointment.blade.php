@@ -47,9 +47,9 @@
                                         <span class="d-inline-block average-rating">35</span>
                                     </div> --}}
                                     <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i>
-                                        {{ $teacher?->additional?->state ? $user?->additional?->state . ',' : '' }}
+                                        {{ $teacher?->additional?->state ? $teacher?->additional?->state . ',' : '' }}
                                         {{ $teacher?->additional?->city ? $teacher?->additional?->city . ',' : '' }}
-                                        {{ $teacher?->additional?->country ? $user?->additional?->country : '' }}</p>
+                                        {{ $teacher?->additional?->country ? $teacher?->additional?->country : '' }}</p>
                                 </div>
                             </div>
                         </div>

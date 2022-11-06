@@ -21,4 +21,9 @@ class TeacherCourse extends Pivot
     {
         return $this->belongsTo('\App\Models\Course', 'course_id');
     }
+
+    public function materials()
+    {
+        return $this->hasMany('\App\Models\TeacherCourseMaterial', 'teacher_course_id');
+    }
 }

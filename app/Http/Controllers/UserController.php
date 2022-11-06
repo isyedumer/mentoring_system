@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -33,7 +34,7 @@ class UserController extends Controller
     public function makeAppointment(Course $course, User $teacher)
     {
         $teacherCourse = TeacherCourse::where('course_id', $course->id)->where('user_id', $teacher->id)->first();
-        if(!$teacherCourse) {
+        if (!$teacherCourse) {
             abort(404);
         }
         return view('user.student.make_appointment', compact('course', 'teacher'));
@@ -42,13 +43,13 @@ class UserController extends Controller
     public function makeAppointmentPost(Request $request, Course $course, User $teacher)
     {
         $teacherCourse = TeacherCourse::where('course_id', $course->id)->where('user_id', $teacher->id)->first();
-        if(!$teacherCourse) {
+        if (!$teacherCourse) {
             abort(404);
         }
         $validator = Validator::make($request->all(), [
             'date' => 'required',
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()]);
         }
         $student = auth()->user();
@@ -59,9 +60,37 @@ class UserController extends Controller
         return redirect(route('student.appointments'))->with(['message' => 'Appointment requested successfully!']);
     }
 
-    // public function studentList()
-    // {
+    public function uploadMaterial(Course $course)
+    {
+        $user = auth()->user();
+        $teacherCourse = TeacherCourse::where('user_id', $user->id)->where('course_id', $course->id)->first();
+        return view('user.teacher.upload_material', compact('teacherCourse'));
+    }
 
+    public function uploadMaterialPost(Request $request, TeacherCourse $course)
+    {
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'file' => 'required|file'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()]);
+        }
+        if ($request->hasFile('file')) {
+            $uploaded = $request->file('file');
+            $file = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
+            $uploaded->storeAs('files', $file, 'public');
+            $url = url("/storage/files/" . $file);
+            $request['content'] = $url;
+        }
+        $course->materials()->create($request->all());
+        return redirect(route('teacher.course.materials', $course->course->id))->with(['type' => 'success', 'message' => 'Material added successfully!']);
+    }
 
-    // }
+    public function materials(Course $course)
+    {
+        $user = auth()->user();
+        $teacherCourse = TeacherCourse::where('user_id', $user->id)->where('course_id', $course->id)->first();
+        return view('user.teacher.materials', compact('teacherCourse'));
+    }
 }

@@ -97,6 +97,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @if ($students->isEmpty())
+                                                    <tr>
+                                                        <td colspan="4" class="text-center">No data available in the
+                                                            table
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                                 @foreach ($students->unique('student_id') as $student)
                                                     <tr>
                                                         <td class="text-center">
