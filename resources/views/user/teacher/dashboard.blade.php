@@ -97,12 +97,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($students as $student)
+                                                @foreach ($students->unique('student_id') as $student)
                                                     <tr>
                                                         <td class="text-center">
                                                             <h2 class="table-avatar">
-                                                                <a href="{{ route('student.profile', $student->student->id) }}" class="avatar avatar-sm me-2">
-                                                                    <img src="{{ $student->student?->additional?->profile_image ? $student->student?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" />
+                                                                <a href="{{ route('student.profile', $student->student->id) }}"
+                                                                    class="avatar avatar-sm me-2">
+                                                                    <img src="{{ $student->student?->additional?->profile_image ? $student->student?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                                                                        width="100" height="100" />
                                                                     {{ $student->student->name }}
                                                             </h2>
                                                         </td>
@@ -113,7 +115,8 @@
                                                         <td class="text-center">
                                                             {{ $student->student->created_at->diffForHumans() }}
                                                         </td>
-                                                        <td class="text-center"><a href="{{ route('student.profile', $student->student->id) }}"
+                                                        <td class="text-center"><a
+                                                                href="{{ route('student.profile', $student->student->id) }}"
                                                                 class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
                                                                 View</a></td>
                                                     </tr>
@@ -121,6 +124,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    @if ($students->lastPage() > 1)
+                                        <div class="p-3">{{ $students->links('pagination::bootstrap-5') }}</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

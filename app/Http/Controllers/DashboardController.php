@@ -15,11 +15,11 @@ class DashboardController extends Controller
             return view('admin.dashboard');
         } elseif ($user->role->type == 'teacher') {
             $user = auth()->user();
-            $students = StudentTeacherAppointment::where('teacher_id', $user->id)->get()->unique('student_id');
+            $students = StudentTeacherAppointment::where('teacher_id', $user->id)->distinct('student_id')->paginate(1);
             return view('user.teacher.dashboard',compact('students'));
         } elseif ($user->role->type == 'student') {
             $user = auth()->user();
-            $teachers = StudentTeacherAppointment::where('student_id', $user->id)->get()->unique('teacher_id');
+            $teachers = StudentTeacherAppointment::where('student_id', $user->id)->distinct('teacher_id')->paginate(1);
             return view('user.student.dashboard', compact('teachers'));
         }
     }

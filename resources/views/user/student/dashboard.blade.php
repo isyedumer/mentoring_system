@@ -102,8 +102,10 @@
                                                     <tr>
                                                         <td class="text-center">
                                                             <h2 class="table-avatar">
-                                                                <a href="{{ route('teacher.profile', $teacher->teacher->id) }}" class="avatar avatar-sm me-2">
-                                                                    <img src="{{ $teacher->teacher?->additional?->profile_image ? $teacher->teacher?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" />
+                                                                <a href="{{ route('teacher.profile', $teacher->teacher->id) }}"
+                                                                    class="avatar avatar-sm me-2">
+                                                                    <img src="{{ $teacher->teacher?->additional?->profile_image ? $teacher->teacher?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                                                                        width="100" height="100" />
                                                                     {{ $teacher->teacher->name }}
                                                             </h2>
                                                         </td>
@@ -114,7 +116,8 @@
                                                         <td class="text-center">
                                                             {{ $teacher->teacher->created_at->diffForHumans() }}
                                                         </td>
-                                                        <td class="text-center"><a href="{{ route('teacher.profile', $teacher->teacher->id) }}"
+                                                        <td class="text-center"><a
+                                                                href="{{ route('teacher.profile', $teacher->teacher->id) }}"
                                                                 class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
                                                                 View</a></td>
                                                     </tr>
@@ -122,6 +125,9 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    @if ($teachers->lastPage() > 1)
+                                        <div class="p-3">{{ $teachers->links('pagination::bootstrap-5') }}</div>
+                                    @endif
                                 </div>
                             </div>
 
