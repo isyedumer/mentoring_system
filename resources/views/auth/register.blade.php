@@ -93,6 +93,16 @@
                                             </option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Subscription</label>
+                                        <select class="form-select" name="subscription">
+                                            <option value>Select subscription</option>
+                                            <option value="M" {{ old('subscription') == 'free' ? 'selected' : '' }}>Free
+                                            </option>
+                                            <option value="F"{{ old('subscription') == 'paid' ? 'selected' : '' }}>Paid
+                                            </option>
+                                        </select>
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label class="form-control-label">Select type to be applied</label>

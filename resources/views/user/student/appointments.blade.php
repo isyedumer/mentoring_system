@@ -49,7 +49,8 @@
                                                 <th class="text-center">Course</th>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center"></th>
+                                                <th class="text-center">Material</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -75,6 +76,17 @@
                                                     <td class="text-center"><span
                                                             class="{{ $appointment->status == 'Pending' ? 'pending' : ($appointment->status == 'Accepted' ? 'accept' : ($appointment->status == 'Rejected' ? 'reject' : '')) }}">{{ $appointment->status }}</span>
                                                     </td>
+                                                    @php
+                                                        if($appointment->status == 'Pending' || $appointment->status == 'Rejected') {
+                                                            $message = 'N/A';
+                                                        } else {
+                                                            $message = '<a href="'. route('student.course.materials', $appointment->id) . '"
+                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
+                                                            View</a>';
+                                                        }
+                                                    @endphp
+                                                    <td class="text-center"><?php echo($message) ?></span>
+                                                </td>
                                                     <td class="text-center"><a href="#"
                                                             class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
                                                             View</a>

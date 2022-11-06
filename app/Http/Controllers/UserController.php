@@ -93,4 +93,11 @@ class UserController extends Controller
         $teacherCourse = TeacherCourse::where('user_id', $user->id)->where('course_id', $course->id)->first();
         return view('user.teacher.materials', compact('teacherCourse'));
     }
+
+    public function materials_Student($appointmentId)
+    {
+        $studentTeacherAppointment = StudentTeacherAppointment::find($appointmentId);
+        $teacherCourse = TeacherCourse::where('user_id', $studentTeacherAppointment->teacher->id)->where('course_id', $studentTeacherAppointment->course->id)->first();
+        return view('user.student.materials', compact('teacherCourse'));
+    }
 }

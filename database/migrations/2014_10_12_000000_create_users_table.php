@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('gender', ['M', 'F']);
+            $table->enum('subscription', ['free', 'paid']);
             $table->enum('is_active', ['0', '1'])->default('0');
             $table->unsignedBigInteger('role_id');
             $table->rememberToken();

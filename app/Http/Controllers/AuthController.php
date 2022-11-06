@@ -61,6 +61,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
             'gender' => 'required',
+            'subscription' => 'required',
             'role_id' => 'required|exists:roles,id',
             'courses' => 'required_if:role_id,2'
         ], [
@@ -77,17 +78,25 @@ class AuthController extends Controller
                 'name' => $request->first_name . ' ' . $request->last_name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'subscription' => $request->subscription,
                 'gender' => $request->gender,
+                'is_active' => $request->subscription == 'free' ? 1 : 0,
                 'role_id' => $request->role_id,
             ]);
             $user->additional()->create();
             $user->courses()->sync($request->courses);
+            $message = '';
+            if($request->subscription == 'free') {
+                $message = 'You have been registered successfully as a free user! You can now login';
+            } else {
+                $message = 'Your request has been submitted! You will be able to login to system once your account will be approved!';
+            }
             DB::commit();
             return redirect(route('login'))->with(['type' => 'success', 'message' => 'Your request has been submitted! You will be able to login to system once your account will be approved!']);
         } catch (Exception) {
             DB::rollBack();
             if (!$user) {
-                return redirect()->back()->with(['type' => 'error', 'message' => 'An error occured while creating the user! Please try again later']);
+                return redirect()->back()->with(['type' => 'error', 'message' => $message]);
             }
         }
     }

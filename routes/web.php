@@ -47,6 +47,7 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
         Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
         Route::get('/courses/{course}/materials/upload', [UserController::class, 'uploadMaterial'])->name('teacher.course.materials.upload');
         Route::post('/courses/{course}/materials/upload', [UserController::class, 'uploadMaterialPost'])->name('teacher.course.materials.upload.post');
+        Route::get('/courses/{course}/materials', [UserController::class, 'materials'])->name('teacher.course.materials');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editTeacherProfile'])->name('teacher.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateTeacherProfile'])->name('teacher.profile.update');
         Route::get('/appointments/{id}/accept', [HomeController::class, 'acceptAppointment'])->name('accept.appointment');
@@ -59,13 +60,13 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
         Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
         Route::get('/appointments/make/courses/{course}/teachers/{teacher}', [UserController::class, 'makeAppointment'])->name('appointments.make');
         Route::post('/appointments/make/courses/{course}/teachers/{teacher}', [UserController::class, 'makeAppointmentPost'])->name('appointments.make.post');
+        Route::get('/courses/{appointmentId}/materials', [UserController::class, 'materials_Student'])->name('student.course.materials');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editStudentProfile'])->name('student.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateStudentProfile'])->name('student.profile.update');
     });
 
     Route::get('teacher/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
     Route::get('student/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
-    Route::get('/courses/{course}/materials', [UserController::class, 'materials'])->name('teacher.course.materials');
 
 
 });
