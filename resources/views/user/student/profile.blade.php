@@ -59,6 +59,11 @@
                                 </div>
                                 <div class="user-info-right d-flex align-items-end flex-wrap">
                                     <div class="hireme-btn text-center">
+                                        @if (auth()->user()->id == $user->id)
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('student.profile.edit', $user->id) }}">Update
+                                                    Profile</a>
+                                            @endif
                                         {{-- <span class="hire-rate"> ₹ 500 / Hour</span>
                                         <a class="blue-btn-radius" href="booking.html">Hire Me</a> --}}
                                     </div>

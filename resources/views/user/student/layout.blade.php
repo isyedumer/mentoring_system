@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/user/css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -336,6 +337,9 @@
     <!-- Sticky Sidebar JS -->
     <script src="{{ asset('assets/user/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
     <script src="{{ asset('assets/user/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
+
+    <script src="{{ asset('assets/user/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/bootstrap-datetimepicker.min.js') }}"></script>
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/user/js/script.js') }}"></script>

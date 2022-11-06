@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,7 @@ class ProfileController extends Controller
     {
         DB::beginTransaction();
         try {
+            $request['date_of_birth'] = Carbon::createFromFormat('d/m/Y', $request->date_of_birth)->format('Y-m-d');
             $user->update($request->all());
             if ($request->hasFile('image')) {
                 $uploaded = $request->file('image');
@@ -58,6 +60,7 @@ class ProfileController extends Controller
     {
         DB::beginTransaction();
         try {
+            $request['date_of_birth'] = Carbon::createFromFormat('d/m/Y', $request->date_of_birth)->format('Y-m-d');
             $user->update($request->all());
             if ($request->hasFile('image')) {
                 $uploaded = $request->file('image');
