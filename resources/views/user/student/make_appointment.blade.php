@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Course</label>
-                                    <input class="form-control" value="{{ $course->name }}" readonly />
+                                    <input class="form-control" value="{{ $course->title }}" readonly />
                                 </div>
                                 <div class="form-group">
                                     <label>Date</label>

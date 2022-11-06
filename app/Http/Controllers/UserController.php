@@ -56,6 +56,7 @@ class UserController extends Controller
             'course_id' => $course->id,
             'date' => Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d'),
         ]);
+        return redirect(route('student.appointments'))->with(['message' => 'Appointment requested successfully!']);
     }
 
     // public function studentList()
