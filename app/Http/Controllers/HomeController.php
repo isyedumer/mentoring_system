@@ -68,4 +68,10 @@ class HomeController extends Controller
         ]);
         return redirect()->back()->with(['type' => 'success', 'message' => 'Appointment status rejected successfully!']);
     }
+
+
+    public function courseDetail(TeacherCourse $teacherCourse)
+    {
+        return view('user.student.course_detail', compact('teacherCourse'));
+    }
 }

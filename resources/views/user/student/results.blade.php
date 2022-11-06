@@ -134,67 +134,49 @@
                 <!-- /Search Filter -->
 
             </div> --}}
+                <!-- Mentor Widget -->
+                @foreach ($results as $result)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="course-box">
+                            <div class="product">
+                                <div class="product-img">
+                                    <a href="{{ route('course.detail',$result->id) }}">
+                                        <img class="img-fluid" alt=""
+                                            src="{{ $result->course->image }}" width="600"
+                                            height="300">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <div class="course-info align-items-center" style="display: block">
+                                        <div class="course-view" style="float: right;">
+                                            <i class="fas fa-user-graduate"></i>
+                                            @php
 
-                <div class="col-md-12 col-lg-12 col-xl-12">
-
-                    <!-- Mentor Widget -->
-                    @foreach ($results as $result)
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="mentor-widget">
-                                    <div class="user-info-left">
-                                        <div class="mentor-img">
-                                            <a href="{{ route('teacher.profile', $result->user->id) }}">
-                                                <img class="img-fluid" src="{{ $result->user?->additional?->profile_image ? $result->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" />
-                                            </a>
-                                        </div>
-                                        <div class="user-info-cont">
-                                            <h4 class="usr-name"><a
-                                                    href="{{ route('teacher.profile', $result->user->id) }}">{{ $result->user->name }}</a>
-                                            </h4>
-                                            <p class="mentor-type">{{ $result->course->title }}</p>
-                                            {{-- <div class="rating">
-                                            <i class="fas fa-star filled"></i>
-                                            <i class="fas fa-star filled"></i>
-                                            <i class="fas fa-star filled"></i>
-                                            <i class="fas fa-star filled"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span class="d-inline-block average-rating">(17)</span>
-                                        </div> --}}
-                                            <div class="mentor-details">
-                                                <p class="user-location"><i class="fas fa-map-marker-alt"></i>
-                                                    {{ $result->user?->additional?->state ? $result->user?->additional?->state . ',' : '' }}
-                                                    {{ $result->user?->additional?->city ? $result->user?->additional?->city . ',' : '' }}
-                                                    {{ $result->user?->additional?->country ? $result->user?->additional?->country : '' }}
-                                                </p>
-                                                </p>
+                                                $appointmentCount = App\Models\StudentTeacherAppointment::where('course_id', $result->course->id)->where('teacher_id', $result->user->id)->count();
+                                            @endphp
+                                            <div class="graduate-point">
+                                                <span>{{ $appointmentCount }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="user-info-right">
-                                        <div class="user-infos">
-                                            <ul>
-                                                {{-- <li><i class="far fa-comment"></i> 17 Feedback</li> --}}
-                                                <li><i class="fas fa-map-marker-alt"></i>
-                                                    {{ $result->user?->additional?->state ? $result->user?->additional?->state . ',' : '' }}
-                                                    {{ $result->user?->additional?->city ? $result->user?->additional?->city . ',' : '' }}
-                                                    {{ $result->user?->additional?->country ? $result->user?->additional?->country : '' }}
-                                                </li>
-                                                <li><i class="far fa-money-bill-alt"></i> {{ $result->user?->additional?->teacher_per_hour ?? '5$' }} </li>
-                                            </ul>
+                                    <h3 class="title"><a href="{{ route('course.detail',$result->id) }}">{{ $result->course->title }}</a></h3>
+                                    <div class="rating rating-star rating-two align-items-center">
+                                        <div class="rating-img">
+                                            <img src="{{ asset('/img/user/user6.jpg') }}" alt="">
                                         </div>
-                                        <div class="mentor-booking">
-                                            <a class="apt-btn" href="{{ route('appointments.make', [$result->course->id, $result->user->id]) }}">Book Appointment</a>
+                                        <h5>{{ $result->user->name }}</h5>
+                                        <div class="course-price" style="float: right;">
+                                            <h4><span>{{ $result->course->price }}</span></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-
-                    <div class="load-more text-center">
-                        <div class="p-3">{{ $results->links('pagination::bootstrap-5') }}</div>
                     </div>
+                @endforeach
+
+                <div class="load-more text-center">
+                    <div class="p-3">{{ $results->links('pagination::bootstrap-5') }}</div>
                 </div>
             </div>
 
