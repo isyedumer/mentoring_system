@@ -81,7 +81,8 @@
                                             <label>Date of Birth</label>
                                             <div class="cal-icon">
                                                 <input type="text" class="form-control datetimepicker"
-                                                    name="date_of_birth" value="{{ $user?->additional?->date_of_birth ? \Carbon\Carbon::createFromFormat('Y-m-d', $user?->additional?->date_of_birth)->format('d/m/Y') : '' }}">
+                                                    name="date_of_birth"
+                                                    value="{{ $user?->additional?->date_of_birth ? \Carbon\Carbon::createFromFormat('Y-m-d', $user?->additional?->date_of_birth)->format('d/m/Y') : '' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -90,28 +91,28 @@
                                             <label>Blood Group</label>
                                             <select class="form-select" name="blood_group">
                                                 <option value="A"
-                                                    {{ $user?->additional?->bloodgroup == 'A-' ? 'selected' : '' }}>A-
+                                                    {{ $user?->additional?->blood_group == 'A-' ? 'selected' : '' }}>A-
                                                 </option>
                                                 <option value="A+"
-                                                    {{ $user?->additional?->bloodgroup == 'A+' ? 'selected' : '' }}>A+
+                                                    {{ $user?->additional?->blood_group == 'A+' ? 'selected' : '' }}>A+
                                                 </option>
                                                 <option value="B-"
-                                                    {{ $user?->additional?->bloodgroup == 'B-' ? 'selected' : '' }}>B-
+                                                    {{ $user?->additional?->blood_group == 'B-' ? 'selected' : '' }}>B-
                                                 </option>
                                                 <option value="B+"
-                                                    {{ $user?->additional?->bloodgroup == 'B+' ? 'selected' : '' }}>B+
+                                                    {{ $user?->additional?->blood_group == 'B+' ? 'selected' : '' }}>B+
                                                 </option>
                                                 <option value="AB-"
-                                                    {{ $user?->additional?->bloodgroup == 'AB-' ? 'selected' : '' }}>AB-
+                                                    {{ $user?->additional?->blood_group == 'AB-' ? 'selected' : '' }}>AB-
                                                 </option>
                                                 <option value="AB+"
-                                                    {{ $user?->additional?->bloodgroup == 'AB+' ? 'selected' : '' }}>AB+
+                                                    {{ $user?->additional?->blood_group == 'AB+' ? 'selected' : '' }}>AB+
                                                 </option>
                                                 <option value="O-"
-                                                    {{ $user?->additional?->bloodgroup == 'O-' ? 'selected' : '' }}>O-
+                                                    {{ $user?->additional?->blood_group == 'O-' ? 'selected' : '' }}>O-
                                                 </option>
                                                 <option value="O+"
-                                                    {{ $user?->additional?->bloodgroup == 'O+' ? 'selected' : '' }}>O+
+                                                    {{ $user?->additional?->blood_group == 'O+' ? 'selected' : '' }}>O+
                                                 </option>
                                             </select>
                                         </div>
@@ -161,7 +162,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Country</label>
-                                            <select class="form-select">
+                                            <select class="form-select" name="country">
                                                 <option value="USA" {{ $user?->additional?->country == 'USA' }}>USA
                                                 </option>
                                                 <option value="UK" {{ $user?->additional?->country == 'UK' }}>UK
