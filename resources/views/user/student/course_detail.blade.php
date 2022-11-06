@@ -2,6 +2,8 @@
 
 @section('student_book_appointment_active', 'active')
 
+@section('title', 'Course detail - ' . $teacherCourse->course->title)
+
 @section('breadcrumbs')
     <div class="breadcrumb-bar">
         <div class="container-fluid">
