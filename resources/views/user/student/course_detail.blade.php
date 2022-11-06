@@ -33,10 +33,11 @@
                         <div class="card-body">
                             <h3>Course Overview</h3>
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-2">
                                     <div class="booking-user-info">
-                                        <img src="{{ $teacherCourse->course->image }}" width="300"
-                                            height="300" />
+                                        <div class="profile-img" style="height: 200px; width: 200px;">
+                                            <img style="width: 180px; height: 180px;" src="{{ $teacherCourse->course->image }}" width="100" height="100" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-3">
@@ -47,8 +48,10 @@
                                         <p class="text-muted mb-2"><i class="fas fa-map-marker-alt"></i>
                                             {{ $teacherCourse->user?->additional?->state ? $teacherCourse->user?->additional?->state . ',' : '' }}
                                             {{ $teacherCourse->user?->additional?->city ? $teacherCourse->user?->additional?->city . ',' : '' }}
-                                            {{ $teacherCourse->user?->additional?->country ? $teacherCourse->user?->additional?->country : '' }}</p>
-                                        <a href="{{ route('appointments.make',[$teacherCourse->course->id,$teacherCourse->user->id]) }}" class="btn btn-primary">Book an appointment</a>
+                                            {{ $teacherCourse->user?->additional?->country ? $teacherCourse->user?->additional?->country : '' }}
+                                        </p>
+                                        <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
+                                            class="btn btn-primary">Book an appointment</a>
                                     </div>
                                 </div>
                             </div>
@@ -60,8 +63,91 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4>Course Description</h4>
+                            <h3>Course Description</h3>
                             <p>{{ $teacherCourse->course->desc }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Ask your Queries</h3>
+                            @if ($teacherCourse->queries->isEmpty())
+                                <p>No queries yet</p>
+                            @else
+                                <div class="row mt-4">
+                                    {{-- <div class="col-3">
+                                        <h4>Name</h4>
+                                    </div>
+                                    <div class="col-3">
+                                        <h4>Question</h4>
+                                    </div> --}}
+                                </div>
+                                @foreach ($teacherCourse->queries as $query)
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row mt-4">
+                                                <div class="col-3">
+                                                    <div class="booking-user-info">
+                                                        <div class="profile-img m-">
+                                                            <img src="{{ $query->student?->additional?->profile_image ? $query->student?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                                                                width="100" height="100" />
+                                                        </div>
+                                                        <div class="booking-info" style="margin-left: 10px;">
+                                                            <h4>{{ $query->student->name }}</h4>
+                                                            {{-- <div class="rating">
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star"></i>
+                                                <span class="d-inline-block average-rating">35</span>
+                                            </div> --}}
+                                                            <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i>
+                                                                {{ $query->student?->additional?->state ? $query->student?->additional?->state . ',' : '' }}
+                                                                {{ $query->student?->additional?->city ? $query->student?->additional?->city . ',' : '' }}
+                                                                {{ $query->student?->additional?->country ? $query->student?->additional?->country : '' }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    <p>{{ $query->question }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <h5>Please type your query here</h5>
+                                    <form method="POST" action="{{ route('query.post', $teacherCourse->id) }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Your feedback on this course</label>
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

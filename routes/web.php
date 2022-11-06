@@ -57,8 +57,6 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
 
     Route::middleware(['can:verify_role,"student"'])->prefix('student')->group(function() {
         Route::get('/appointments', [HomeController::class, 'appointments_Student'])->name('student.appointments');
-        Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
-        Route::get('/courses/{teacherCourse}', [HomeController::class, 'courseDetail'])->name('course.detail');
         Route::get('/appointments/make/courses/{course}/teachers/{teacher}', [UserController::class, 'makeAppointment'])->name('appointments.make');
         Route::post('/appointments/make/courses/{course}/teachers/{teacher}', [UserController::class, 'makeAppointmentPost'])->name('appointments.make.post');
         Route::get('/courses/{appointmentId}/materials', [UserController::class, 'materials_Student'])->name('student.course.materials');
@@ -68,6 +66,7 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
 
     Route::get('teacher/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
     Route::get('student/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
-
-
+    Route::get('/courses/{teacherCourse}', [HomeController::class, 'courseDetail'])->name('course.detail');
+    Route::post('/queries/{teacherCourse}', [HomeController::class, 'queryPost'])->name('query.post');
+    Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
 });

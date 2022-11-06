@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\StudentTeacherAppointment;
 use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -73,5 +74,18 @@ class HomeController extends Controller
     public function courseDetail(TeacherCourse $teacherCourse)
     {
         return view('user.student.course_detail', compact('teacherCourse'));
+    }
+
+    public function queryPost(Request $request, TeacherCourse $teacherCourse)
+    {
+        $validator = Validator::make($request->all(), [
+            'question' => 'required',
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()]);
+        }
+        $request['student_id'] = auth()->user()->id;
+        $teacherCourse->queries()->create($request->all());
+        return redirect()->back()->with(['type' => 'success', 'message' => 'Question posted successfully!']);
     }
 }

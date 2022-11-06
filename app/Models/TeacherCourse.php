@@ -26,4 +26,14 @@ class TeacherCourse extends Pivot
     {
         return $this->hasMany('\App\Models\TeacherCourseMaterial', 'teacher_course_id');
     }
+
+    public function feedbacks()
+    {
+        return $this->hasMany('\App\Models\TeacherCourseFeedback', 'teacher_course_id');
+    }
+
+    public function queries()
+    {
+        return $this->hasMany('\App\Models\TeacherCourseQuery', 'teacher_course_id');
+    }
 }
