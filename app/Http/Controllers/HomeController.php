@@ -50,4 +50,22 @@ class HomeController extends Controller
         $appointments = StudentTeacherAppointment::where('teacher_id', $user->id)->paginate(10);
         return view('user.teacher.appointments', compact('appointments'));
     }
+
+    public function acceptAppointment($id)
+    {
+        $appointment = StudentTeacherAppointment::find($id);
+        $appointment->update([
+            'status' => 'Accepted',
+        ]);
+        return redirect()->back()->with(['type' => 'success', 'message' => 'Appointment status accepted successfully!']);
+    }
+
+    public function rejectAppointment($id)
+    {
+        $appointment = StudentTeacherAppointment::find($id);
+        $appointment->update([
+            'status' => 'Rejected',
+        ]);
+        return redirect()->back()->with(['type' => 'success', 'message' => 'Appointment status rejected successfully!']);
+    }
 }

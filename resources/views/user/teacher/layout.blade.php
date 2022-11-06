@@ -147,14 +147,14 @@
                         <li class="nav-item dropdown has-arrow logged-item">
                             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                                 <span class="user-img">
-                                    <img class="rounded-circle" src="{{ asset('assets/user/img/user/user.jpg') }}"
+                                    <img class="rounded-circle" src="{{ auth()->user()?->additional?->profile_image ? auth()->user()?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
                                         width="31" alt="{{ auth()->user()->name }}">
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div class="user-header">
                                     <div class="avatar avatar-sm">
-                                        <img src="{{ asset('assets/user/img/user/user.jpg') }}" alt="User Image"
+                                        <img src="{{ auth()->user()?->additional?->profile_image ? auth()->user()?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" alt="User Image"
                                             class="avatar-img rounded-circle">
                                     </div>
                                     <div class="user-text">
@@ -166,7 +166,7 @@
                                     </div>
                                 </div>
                                 {{-- <a class="dropdown-item" href="{{ }}">Dashboard</a> --}}
-                                <a class="dropdown-item" href="profile-settings.html">Profile Settings</a>
+                                <a class="dropdown-item" href="{{ route('teacher.profile', auth()->user()->id) }}">Profile Settings</a>
                                 <a class="dropdown-item">
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf

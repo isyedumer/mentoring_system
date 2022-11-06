@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\StudentTeacherAppointment;
 use App\Models\TeacherCourse;
 use App\Models\User;
 use Carbon\Carbon;
@@ -56,4 +57,10 @@ class UserController extends Controller
             'date' => Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d'),
         ]);
     }
+
+    // public function studentList()
+    // {
+
+
+    // }
 }

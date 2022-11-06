@@ -55,7 +55,7 @@
                                         <tbody>
                                             @if ($appointments->isEmpty())
                                                 <tr>
-                                                    <td colspan="4" class="text-center">No data available in the table
+                                                    <td colspan="5" class="text-center">No data available in the table
                                                     </td>
                                                 </tr>
                                             @endif

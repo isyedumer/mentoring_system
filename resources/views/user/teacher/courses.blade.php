@@ -1,5 +1,7 @@
 @extends('user.teacher.layout')
 
+@section('teacher_courses_active', 'active')
+
 @section('title', 'Courses available to teach')
 
 @section('breadcrumbs')

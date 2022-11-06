@@ -1,5 +1,7 @@
 @extends('user.teacher.layout')
 
+@section('teacher_profile_active', 'active')
+
 @section('title', $user->name . "'s " . 'profile')
 
 @section('breadcrumbs')

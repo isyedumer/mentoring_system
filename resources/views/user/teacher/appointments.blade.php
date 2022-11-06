@@ -1,6 +1,6 @@
 @extends('user.teacher.layout')
 
-@section('student_appointments_active', 'active')
+@section('teacher_appointments_active', 'active')
 
 @section('title', 'Appointments')
 
@@ -49,13 +49,13 @@
                                                 <th class="text-center">Course</th>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Status</th>
-                                                <th class="text-center"></th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if ($appointments->isEmpty())
                                                 <tr>
-                                                    <td colspan="4" class="text-center">No data available in the table
+                                                    <td colspan="5" class="text-center">No data available in the table
                                                     </td>
                                                 </tr>
                                             @endif
@@ -75,9 +75,33 @@
                                                     <td class="text-center"><span
                                                             class="{{ $appointment->status == 'Pending' ? 'pending' : ($appointment->status == 'Accepted' ? 'accept' : ($appointment->status == 'Rejected' ? 'reject' : '')) }}">{{ $appointment->status }}</span>
                                                     </td>
-                                                    <td class="text-center"><a href="#"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a>
+                                                    <td class="text-center">
+                                                        <div class="row" style="justify-content: center;">
+                                                            <div style="padding-left: 0px;" class="col-3">
+                                                                <a href="#" class="btn btn-sm bg-info-light"><i
+                                                                        class="far fa-eye"></i>
+                                                                    View</a>
+                                                            </div>
+                                                            @if ($appointment->status == 'Pending')
+                                                                <div class="col-6">
+                                                                    <select class="form-select" id="appointment_status"
+                                                                        data-value="{{ $appointment->id }}"
+                                                                        onchange="location = this.value;">
+                                                                        <option value>Select status</option>
+                                                                        <option
+                                                                            value="{{ route('accept.appointment', $appointment->id) }}">
+                                                                            Accept</option>
+                                                                        <option
+                                                                            value="{{ route('reject.appointment', $appointment->id) }}">
+                                                                            Reject</option>
+                                                                    </select>
+                                                                </div>
+                                                            @else
+                                                                {{-- <span
+                                                                        class="{{ $appointment->status == 'Pending' ? 'pending' : ($appointment->status == 'Accepted' ? 'accept' : ($appointment->status == 'Rejected' ? 'reject' : '')) }}">{{ $appointment->status }}</span> --}}
+                                                            @endif
+
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -47,6 +47,9 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
         Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editTeacherProfile'])->name('teacher.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateTeacherProfile'])->name('teacher.profile.update');
+        Route::get('/appointments/{id}/accept', [HomeController::class, 'acceptAppointment'])->name('accept.appointment');
+        Route::get('/appointments/{id}/reject', [HomeController::class, 'rejectAppointment'])->name('reject.appointment');
+        Route::get('/students', [UserController::class, 'studentList']);
     });
 
     Route::middleware(['can:verify_role,"student"'])->prefix('student')->group(function() {

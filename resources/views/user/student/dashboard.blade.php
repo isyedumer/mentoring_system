@@ -82,7 +82,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="mb-4">Mentor Lists</h4>
+                            <h4 class="mb-4">Teachers Lists</h4>
 
                             <div class="card card-table">
                                 <div class="card-body">
@@ -90,125 +90,35 @@
                                         <table class="table table-hover table-center mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>BASIC INFO</th>
-                                                    <th>CREATED DATE</th>
-                                                    <th class="text-center">TAGS</th>
-                                                    <th class="text-center">ACTION</th>
+                                                    <th class="text-center">Name</th>
+                                                    <th class="text-center">Email</th>
+                                                    <th class="text-center">Gender</th>
+                                                    <th class="text-center">Member Since</th>
+                                                    <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user14.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Tyrone
-                                                                Roberts<span>tyroneroberts@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="pending">PENDING</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user15.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Julie Pennington
-                                                                <span>julie@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="pending">PENDING</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user12.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Allen Davis
-                                                                <span>allendavis@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="pending">PENDING</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user13.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Patricia Manzi
-                                                                <span>patriciamanzi@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="accept">ACCEPTED</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user5.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Olive Lawrence
-                                                                <span>olivelawrence@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="accept">ACCEPTED</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user10.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Frances Foster
-                                                                <span>frances@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="accept">ACCEPTED</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="profile.html" class="avatar avatar-sm me-2"><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/user/user7.jpg" alt="User Image"></a>
-                                                            <a href="profile.html">Deloris Briscoe
-                                                                <span>delorisbriscoe@adobe.com</span></a>
-                                                        </h2>
-                                                    </td>
-                                                    <td>08 April 2020</td>
-                                                    <td class="text-center"><span class="reject">REJECTED</span></td>
-                                                    <td class="text-center"><a href="profile-mentee.html"
-                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
-                                                            View</a></td>
-                                                </tr>
+                                                @foreach ($teachers as $teacher)
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <h2 class="table-avatar">
+                                                                <a href="{{ route('teacher.profile', $teacher->teacher->id) }}" class="avatar avatar-sm me-2">
+                                                                    <img src="{{ $teacher->teacher?->additional?->profile_image ? $teacher->teacher?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" />
+                                                                    {{ $teacher->teacher->name }}
+                                                            </h2>
+                                                        </td>
+                                                        <td>{{ $teacher->teacher->email }}</td>
+                                                        <td class="text-center">
+                                                            {{ $teacher->teacher->gender }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {{ $teacher->teacher->created_at->diffForHumans() }}
+                                                        </td>
+                                                        <td class="text-center"><a href="{{ route('teacher.profile', $teacher->teacher->id) }}"
+                                                                class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
+                                                                View</a></td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

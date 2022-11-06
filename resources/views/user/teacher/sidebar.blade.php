@@ -22,13 +22,13 @@
     </div> --}}
     <div class="custom-sidebar-nav">
         <ul>
-            <li><a href="{{ route('dashboard') }}" class="@yield('dashboard_active')"><i class="fas fa-home"></i>Dashboard
+            <li><a href="{{ route('dashboard') }}" class="@yield('teacher_dashboard_active')"><i class="fas fa-home"></i>Dashboard
                     <span><i class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('courses.teach') }}"><i class="fas fa-clock"></i>Courses <span><i
+            <li><a href="{{ route('courses.teach') }}" class="@yield('teacher_courses_active')"><i class="fas fa-clock"></i>Courses <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('teacher.appointments') }}"><i class="fas fa-clock"></i>Appointments <span><i
+            <li><a href="{{ route('teacher.appointments') }}" class="@yield('teacher_appointments_active')"><i class="fas fa-clock"></i>Appointments <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('student.profile', auth()->user()->id) }}"><i class="fas fa-user-cog"></i>Profile <span><i
+            <li><a href="{{ route('teacher.profile', auth()->user()->id) }}" class="@yield('teacher_profile_active')"><i class="fas fa-user-cog"></i>Profile <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
         </ul>
     </div>
