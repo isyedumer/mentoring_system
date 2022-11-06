@@ -1,4 +1,4 @@
-@extends('user.student.layout')
+@extends('user.teacher.layout')
 
 @section('student_appointments_active', 'active')
 
@@ -30,7 +30,7 @@
 
                 <!-- Sidebar -->
                 <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-                    @include('user.student.sidebar')
+                    @include('user.teacher.sidebar')
                 </div>
                 <!-- /Sidebar -->
 
@@ -45,7 +45,7 @@
                                     <table class="table table-hover table-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">Teacher</th>
+                                                <th class="text-center">Student</th>
                                                 <th class="text-center">Course</th>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Status</th>
@@ -61,7 +61,7 @@
                                                                     class="avatar-img rounded-circle"
                                                                     src="{{ $appointment->teacher?->additional?->profile_image ? $appointment?->teacher?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"></a>
                                                             <a
-                                                                href="{{ route('teacher.profile', $appointment->teacher->id) }}"><span>{{ $appointment->teacher->name }}</span></a>
+                                                                href="{{ route('student.profile', $appointment->student->id) }}"><span>{{ $appointment->student->name }}</span></a>
                                                         </h2>
                                                     </td>
                                                     <td class="text-center">{{ $appointment->course->title }}</td>

@@ -42,4 +42,10 @@ class HomeController extends Controller
         $appointments = StudentTeacherAppointment::paginate(10);
         return view('user.student.appointments', compact('appointments'));
     }
+
+    public function appointments_Teacher()
+    {
+        $appointments = StudentTeacherAppointment::paginate(10);
+        return view('user.teacher.appointments', compact('appointments'));
+    }
 }

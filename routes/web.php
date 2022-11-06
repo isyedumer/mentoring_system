@@ -43,7 +43,7 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
     });
 
     Route::middleware(['can:verify_role,"teacher"'])->prefix('teacher')->group(function() {
-        // Route::get('/appointments', [HomeController::class, 'appointments'])->name('teacher.appointments');
+        Route::get('/appointments', [HomeController::class, 'appointments_Teacher'])->name('teacher.appointments');
         Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editTeacherProfile'])->name('teacher.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateTeacherProfile'])->name('teacher.profile.update');
