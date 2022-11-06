@@ -1,6 +1,6 @@
 <div class="profile-sidebar">
     <div class="user-widget">
-        <div class="pro-avatar"><img src="{{ auth()->user()?->additional?->profile_image }}" width="100" height="100" /></div>
+        <div><img src="{{ auth()->user()?->additional?->profile_image ?? 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" /></div>
         {{-- <div class="rating">
             <i class="fas fa-star filled"></i>
             <i class="fas fa-star filled"></i>
@@ -22,7 +22,7 @@
     </div> --}}
     <div class="custom-sidebar-nav">
         <ul>
-            <li><a href="dashboard-mentee.html" class="active"><i class="fas fa-home"></i>Dashboard
+            <li><a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i>Dashboard
                     <span><i class="fas fa-chevron-right"></i></span></a></li>
             <li><a href="{{ route('appointments') }}"><i class="fas fa-clock"></i>Appointments<span><i
                             class="fas fa-chevron-right"></i></span></a></li>

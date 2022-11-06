@@ -33,15 +33,15 @@
                                 <div class="user-info-left align-items-center">
                                     <div class="mentor-img d-flex flex-wrap justify-content-center">
                                         <div class="pro-avatar">
-                                            <div class="pro-avatar"><img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : '' }}" width="100" height="100" /></div>
+                                            <div><img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" /></div>
                                         </div>
-                                        <div class="rating text-center">
+                                        {{-- <div class="rating text-center">
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star filled"></i>
                                             <i class="fas fa-star"></i>
-                                        </div>
+                                        </div> --}}
                                         <div class="mentor-details m-0">
                                             <p class="user-location m-0"><i class="fas fa-map-marker-alt"></i>
                                                 {{ $user?->additional?->state ? $user?->additional?->state . ',' : '' }}

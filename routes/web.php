@@ -44,7 +44,6 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
 
     Route::middleware(['can:verify_role,"teacher"'])->prefix('teacher')->group(function() {
         Route::get('/courses', [UserController::class, 'coursesToTeach'])->name('courses.teach');
-        Route::get('/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editTeacherProfile'])->name('teacher.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateTeacherProfile'])->name('teacher.profile.update');
     });
@@ -52,9 +51,11 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
     Route::middleware(['can:verify_role,"student"'])->prefix('student')->group(function() {
         Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
         Route::get('/appointments', [HomeController::class, 'appointments'])->name('appointments');
-        Route::get('/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
         Route::get('/profile/{user}/edit', [ProfileController::class, 'editStudentProfile'])->name('student.profile.edit');
         Route::post('/profile/{user}/update', [ProfileController::class, 'updateStudentProfile'])->name('student.profile.update');
     });
+
+    Route::get('teacher/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
+    Route::get('student/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
 
 });

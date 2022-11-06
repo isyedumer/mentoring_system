@@ -57,7 +57,7 @@
                         </div>
                         <ul class="main-nav">
                             <li class="has-submenu">
-                                <a href="index.html">Home</i></a>
+                                <a href="{{ route('dashboard') }}">Home</i></a>
                             </li>
                             <li class="has-submenu active">
                                 <a href="">Mentor <i class="fas fa-chevron-down"></i></a>

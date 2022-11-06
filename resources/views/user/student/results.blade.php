@@ -140,12 +140,14 @@
                                 <div class="mentor-widget">
                                     <div class="user-info-left">
                                         <div class="mentor-img">
-                                            <a href="profile.html">
-                                                <img src="{{ asset('assets/user/img/user/user.png') }}" class="img-fluid" alt="User Image">
+                                            <a href="{{ route('teacher.profile', $result->user->id) }}">
+                                                <img class="img-fluid" src="{{ $result->user?->additional?->profile_image ? $result->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" />
                                             </a>
                                         </div>
                                         <div class="user-info-cont">
-                                            <h4 class="usr-name"><a href="{{ route('teacher.profile', $result->user->id) }}">{{ $result->user->name }}</a></h4>
+                                            <h4 class="usr-name"><a
+                                                    href="{{ route('teacher.profile', $result->user->id) }}">{{ $result->user->name }}</a>
+                                            </h4>
                                             <p class="mentor-type">{{ $result->course->title }}</p>
                                             {{-- <div class="rating">
                                             <i class="fas fa-star filled"></i>
@@ -156,7 +158,11 @@
                                             <span class="d-inline-block average-rating">(17)</span>
                                         </div> --}}
                                             <div class="mentor-details">
-                                                <p class="user-location"><i class="fas fa-map-marker-alt"></i> Florida, USA
+                                                <p class="user-location"><i class="fas fa-map-marker-alt"></i>
+                                                    {{ $result->user?->additional?->state ? $result->user?->additional?->state . ',' : '' }}
+                                                    {{ $result->user?->additional?->city ? $result->user?->additional?->city . ',' : '' }}
+                                                    {{ $result->user?->additional?->country ? $result->user?->additional?->country : '' }}
+                                                </p>
                                                 </p>
                                             </div>
                                         </div>
@@ -165,10 +171,12 @@
                                         <div class="user-infos">
                                             <ul>
                                                 {{-- <li><i class="far fa-comment"></i> 17 Feedback</li> --}}
-                                                <li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
-                                                <li><i class="far fa-money-bill-alt"></i> $300 - $1000 <i
-                                                        class="fas fa-info-circle" data-bs-toggle="tooltip"
-                                                        title="Lorem Ipsum"></i> </li>
+                                                <li><i class="fas fa-map-marker-alt"></i>
+                                                    {{ $result->user?->additional?->state ? $result->user?->additional?->state . ',' : '' }}
+                                                    {{ $result->user?->additional?->city ? $result->user?->additional?->city . ',' : '' }}
+                                                    {{ $result->user?->additional?->country ? $result->user?->additional?->country : '' }}
+                                                </li>
+                                                <li><i class="far fa-money-bill-alt"></i> {{ $result->user?->additional?->teacher_per_hour ?? '5$' }} </li>
                                             </ul>
                                         </div>
                                         <div class="mentor-booking">
