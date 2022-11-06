@@ -22,13 +22,13 @@
     </div> --}}
     <div class="custom-sidebar-nav">
         <ul>
-            <li><a href="{{ route('dashboard') }}" class="active"><i class="fas fa-home"></i>Dashboard
+            <li><a href="{{ route('dashboard') }}" class="@yield('student_dashboard_active')"><i class="fas fa-home"></i>Dashboard
                     <span><i class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('appointments') }}"><i class="fas fa-clock"></i>Appointments<span><i
+            <li><a class="@yield('student_appointments_active')" href="{{ route('student.appointments') }}"><i class="fas fa-clock"></i>Appointments<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('appointments.book') }}""><i class="fas fa-clock"></i>Book an Appointment<span><i
+            <li><a href="{{ route('appointments.book') }}" class="@yield('student_book_appointment_active')"><i class="fas fa-clock"></i>Book an Appointment<span><i
                             class="fas fa-chevron-right"></i></span></a></li>
-            <li><a href="{{ route('student.profile', auth()->user()->id) }}"><i class="fas fa-user-cog"></i>Profile <span><i
+            <li><a class="@yield('student_book_appointment_active')" href="{{ route('student.profile', auth()->user()->id) }}"><i class="fas fa-user-cog"></i>Profile <span><i
                             class="fas fa-chevron-right"></i></span></a></li>
         </ul>
     </div>

@@ -14,7 +14,7 @@
                         </div>
                         <!-- Search -->
                         <div class="search-box ">
-                            <form action="{{ route('appointments') }}">
+                            <form action="{{ route('appointments.book') }}">
                                 <div class="form-group search-info location-search ">
                                     <input type="text" class="form-control text-truncate" name="q"
                                         placeholder=" Search School, Online educational centers, etc">

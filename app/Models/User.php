@@ -59,4 +59,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('\App\Models\UserAdditional', 'user_id');
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany('\App\Models\User', 'student_teacher_appointments', 'student_id', 'teacher_id')->withPivot('course_id', 'date', 'status')->using(StudentTeacherAppointment::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany('\App\Models\User', 'student_teacher_appointments', 'teacher_id', 'student_id')->withPivot('course_id', 'date', 'status')->using(StudentTeacherAppointment::class);
+    }
 }

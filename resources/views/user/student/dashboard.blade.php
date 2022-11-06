@@ -1,5 +1,7 @@
 @extends('user.student.layout')
 
+@section('student_dashboard_active', 'active')
+
 @section('title', 'Dashboard')
 @section('breadcrumbs')
     <div class="breadcrumb-bar">

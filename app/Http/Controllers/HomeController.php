@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\StudentTeacherAppointment;
 use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 
@@ -34,5 +35,11 @@ class HomeController extends Controller
     {
         $courses = Course::all();
         return view('admin.courses', compact('courses'));
+    }
+
+    public function appointments_Student()
+    {
+        $appointments = StudentTeacherAppointment::paginate(10);
+        return view('user.student.appointments', compact('appointments'));
     }
 }

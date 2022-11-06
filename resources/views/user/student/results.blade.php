@@ -1,6 +1,10 @@
 @extends('user.student.layout')
 
-@section('title', 'Appointments')
+@section('student_book_appointment_active', 'active')
+
+@section('title', 'Search for teachers and courses')
+
+@section('s')
 
 @section('breadcrumbs')
     <div class="breadcrumb-bar">
@@ -9,11 +13,11 @@
                 <div class="col-md-8 col-12">
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Appointments</li>
                         </ol>
                     </nav>
-                    <form action="{{ route('appointments') }}">
+                    <form action="{{ route('appointments.book') }}">
                         <div class="form-group mt-3 row" style="width: 50%;">
                             <div class="col-11">
                                 <input id="search" name="q" value="{{ request()->q }}" class="form-control"
@@ -180,7 +184,7 @@
                                             </ul>
                                         </div>
                                         <div class="mentor-booking">
-                                            <a class="apt-btn" href="booking.html">Book Appointment</a>
+                                            <a class="apt-btn" href="{{ route('appointments.make', [$result->course->id, $result->user->id]) }}">Book Appointment</a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +193,7 @@
                     @endforeach
 
                     <div class="load-more text-center">
-
+                        <div class="p-3">{{ $results->links('pagination::bootstrap-5') }}</div>
                     </div>
                 </div>
             </div>
