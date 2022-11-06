@@ -53,6 +53,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @if ($appointments->isEmpty())
+                                                <tr>
+                                                    <td colspan="4" class="text-center">No data available in the table
+                                                    </td>
+                                                </tr>
+                                            @endif
                                             @foreach ($appointments as $appointment)
                                                 <tr>
                                                     <td class="text-center">

@@ -39,13 +39,15 @@ class HomeController extends Controller
 
     public function appointments_Student()
     {
-        $appointments = StudentTeacherAppointment::paginate(10);
+        $user = auth()->user();
+        $appointments = StudentTeacherAppointment::where('student_id', $user->id)->paginate(10);
         return view('user.student.appointments', compact('appointments'));
     }
 
     public function appointments_Teacher()
     {
-        $appointments = StudentTeacherAppointment::paginate(10);
+        $user = auth()->user();
+        $appointments = StudentTeacherAppointment::where('teacher_id', $user->id)->paginate(10);
         return view('user.teacher.appointments', compact('appointments'));
     }
 }
