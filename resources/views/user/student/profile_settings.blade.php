@@ -47,7 +47,7 @@
                                         <div class="form-group">
                                             <div class="change-avatar">
                                                 <div class="profile-img">
-                                                    <img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : '' }}" width="100" height="100" />
+                                                    <img src="{{ $user?->additional?->profile_image ? $user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" width="100" height="100" />
                                                 </div>
                                                 <div class="upload-img">
                                                     <div class="change-photo-btn">
