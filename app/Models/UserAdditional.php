@@ -18,6 +18,7 @@ class UserAdditional extends Model
         'address',
         'city',
         'state',
+        'postal_code',
         'country',
         'headline',
         'teacher_per_hour'
