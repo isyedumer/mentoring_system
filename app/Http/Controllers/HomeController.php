@@ -99,7 +99,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'required',
+            'desc' => 'required',
             'price' => 'required',
             'img' => 'required'
         ]);
@@ -126,7 +126,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'required',
+            'desc' => 'required',
             'price' => 'required',
         ]);
         if($validator->fails()) {

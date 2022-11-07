@@ -2,6 +2,8 @@
 
 @section('teacher_active', 'active')
 
+@section('title', 'Teachers')
+
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
