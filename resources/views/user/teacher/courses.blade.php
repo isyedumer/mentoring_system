@@ -49,6 +49,7 @@
                                                 <th class="text-center">Title</th>
                                                 <th class="text-center">Description</th>
                                                 <th class="text-center">Image</th>
+                                                <th class="text-center">Course Detail</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -69,6 +70,11 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <img src="{{ $course->image }}" width="50" height="50" />
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a target="_blank" href="{{ route('course.detail',$course->id )}}"
+                                                            class="btn btn-sm bg-info-light"><i class="far fa-eye"></i>
+                                                            View</a>
                                                     </td>
                                                     <td class="text-center">
                                                         <a href="{{ route('teacher.course.materials', $course->id) }}"
