@@ -88,7 +88,7 @@
                     <!-- Recent Orders -->
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h4 class="card-title">Mentor List</h4>
+                            <h4 class="card-title">Teachers List</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
