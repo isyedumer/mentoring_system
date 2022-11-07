@@ -51,10 +51,20 @@
                                             {{ $teacherCourse->user?->additional?->city ? $teacherCourse->user?->additional?->city . ',' : '' }}
                                             {{ $teacherCourse->user?->additional?->country ? $teacherCourse->user?->additional?->country : '' }}
                                         </p>
+                                        @php
+                                            $paidUser = false;
+                                            $user = auth()->user();
+                                            $appointmentsCount = \App\Models\StudentTeacherAppointment::where('student_id', $user->id)->count();
+                                            if($user->subscription == 'free') {
+                                                $paidUser = false;
+                                            } else {
+                                                $paidUser = true;
+                                            }
+                                        @endphp
                                         @auth
                                             @if (auth()->user()->role->type == 'student')
                                                 <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
-                                                    class="btn btn-primary">Book an appointment</a>
+                                                    class="btn btn-primary @if(!$paidUser && $appointmentsCount > 2) disabled @endif">Book an appointment</a>
                                             @endif
                                         @endauth
                                     </div>

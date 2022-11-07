@@ -33,6 +33,17 @@ class UserController extends Controller
 
     public function makeAppointment(Course $course, User $teacher)
     {
+        $paidUser = false;
+        $user = auth()->user();
+        $appointmentsCount = StudentTeacherAppointment::where('student_id', $user->id)->count();
+        if ($user->subscription == 'free') {
+            $paidUser = false;
+        } else {
+            $paidUser = true;
+        }
+        if(!$paidUser && $appointmentsCount > 2) {
+            return redirect()->back()->with(['type' => 'error', 'message' => 'You have reached your appointments limit! Please upgrade your account!')
+        }
         $teacherCourse = TeacherCourse::where('course_id', $course->id)->where('user_id', $teacher->id)->first();
         if (!$teacherCourse) {
             abort(404);

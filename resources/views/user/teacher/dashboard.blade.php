@@ -45,8 +45,8 @@
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h3>23</h3>
-                                    <h6>Members</h6>
+                                    <h3>{{ $totalStudents }}</h3>
+                                    <h6>Students</h6>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h3>33</h3>
+                                    <h3>{{ $totalAppointments }}</h3>
                                     <h6>Appointments</h6>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h3>₹1,40,000</h3>
+                                    <h3>₹{{ $totalEarned }}</h3>
                                     <h6>Total Earned</h6>
                                 </div>
                             </div>

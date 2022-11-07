@@ -2,6 +2,8 @@
 
 @section('student_book_appointment_active', 'active')
 
+@section('title', 'Make an appointment')
+
 @section('breadcrumbs')
     <div class="breadcrumb-bar">
         <div class="container-fluid">

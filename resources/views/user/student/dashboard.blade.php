@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h3>23</h3>
+                                    <h3>{{ $totalAppointments }}</h3>
                                     <h6>Appointments</h6>
                                 </div>
                             </div>
@@ -59,22 +59,8 @@
                                     </div>
                                 </div>
                                 <div class="dash-widget-info">
-                                    <h3>33</h3>
-                                    <h6>Mentoring Points</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 col-lg-4 dash-board-list pink">
-                            <div class="dash-widget">
-                                <div class="circle-bar">
-                                    <div class="icon-col">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
-                                    <h3>14</h3>
-                                    <h6>Rank</h6>
+                                    <h3>{{ $totalTeachers }}</h3>
+                                    <h6>Teachers</h6>
                                 </div>
                             </div>
                         </div>

@@ -20,4 +20,9 @@ class Course extends Model
     {
         return $this->belongsToMany('\App\Models\User', 'teacher_courses', 'course_id', 'teacher_id')->withTimestamps()->using(TeacherCourse::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany('\App\Models\StudentTeacherAppointment', 'course_id');
+    }
 }

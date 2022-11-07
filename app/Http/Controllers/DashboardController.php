@@ -21,12 +21,21 @@ class DashboardController extends Controller
             return view('admin.dashboard', compact('teachers', 'students', 'totalAppointments', 'studentsCount', 'teachersCount'));
         } elseif ($user->role->type == 'teacher') {
             $user = auth()->user();
+            $courseAppointments = StudentTeacherAppointment::where('teacher_id', $user->id)->withSum('course', 'price')->get();
+
+            $totalEarned = $courseAppointments->sum('course_sum_price');
+            $totalAppointments = StudentTeacherAppointment::where('teacher_id', $user->id)->count();
+            $totalStudents = StudentTeacherAppointment::where('teacher_id', $user->id)->distinct('student_id')->count();
             $students = StudentTeacherAppointment::where('teacher_id', $user->id)->distinct('student_id')->paginate(10);
-            return view('user.teacher.dashboard',compact('students'));
+            return view('user.teacher.dashboard',compact('students', 'totalEarned', 'totalStudents', 'totalAppointments'));
         } elseif ($user->role->type == 'student') {
             $user = auth()->user();
+
+            $totalAppointments = StudentTeacherAppointment::where('student_id', $user->id)->count();
+            $totalTeachers = StudentTeacherAppointment::where('student_id', $user->id)->distinct('teacher_id')->count();
+
             $teachers = StudentTeacherAppointment::where('student_id', $user->id)->distinct('teacher_id')->paginate(10);
-            return view('user.student.dashboard', compact('teachers'));
+            return view('user.student.dashboard', compact('teachers', 'totalAppointments', 'totalTeachers'));
         }
     }
 }
