@@ -107,7 +107,7 @@ class HomeController extends Controller
             return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()])->withInput();
         }
         if ($request->hasFile('img')) {
-            $uploaded = $request->file('image');
+            $uploaded = $request->file('img');
             $file = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
             $uploaded->storeAs('courses', $file, 'public');
             $url = url("/storage/courses/" . $file);
@@ -133,7 +133,7 @@ class HomeController extends Controller
             return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()])->withInput();
         }
         if ($request->hasFile('img')) {
-            $uploaded = $request->file('image');
+            $uploaded = $request->file('img');
             $file = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
             $uploaded->storeAs('courses', $file, 'public');
             $url = url("/storage/courses/" . $file);
