@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
+Route::get('/courses/{teacherCourse}', [HomeController::class, 'courseDetail'])->name('course.detail');
 
 Route::middleware(['guest', 'prevent.history'])->group(function(){
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -73,7 +75,5 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
 
     Route::get('teacher/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
     Route::get('student/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
-    Route::get('/courses/{teacherCourse}', [HomeController::class, 'courseDetail'])->name('course.detail');
     Route::post('/queries/{teacherCourse}', [HomeController::class, 'queryPost'])->name('query.post');
-    Route::get('/appointments/book', [HomeController::class, 'bookAppointment'])->name('appointments.book');
 });

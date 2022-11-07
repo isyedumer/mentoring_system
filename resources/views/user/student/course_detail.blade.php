@@ -51,10 +51,12 @@
                                             {{ $teacherCourse->user?->additional?->city ? $teacherCourse->user?->additional?->city . ',' : '' }}
                                             {{ $teacherCourse->user?->additional?->country ? $teacherCourse->user?->additional?->country : '' }}
                                         </p>
-                                        @if (auth()->user()->role->type == 'student')
-                                            <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
-                                                class="btn btn-primary">Book an appointment</a>
-                                        @endif
+                                        @auth
+                                            @if (auth()->user()->role->type == 'student')
+                                                <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
+                                                    class="btn btn-primary">Book an appointment</a>
+                                            @endif
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -124,23 +126,12 @@
                                     </div>
                                 @endforeach
                             @endif
-                            <div class="row mt-4">
-                                <div class="col-6">
-                                    <h5>Please type your query here</h5>
-                                    <form method="POST" action="{{ route('query.post', $teacherCourse->id) }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Your feedback on this course</label>
-                                        <form method="POST">
+                            @auth
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <h5>Please type your query here</h5>
+                                        <form method="POST" action="{{ route('query.post', $teacherCourse->id) }}">
+                                            @csrf
                                             <div class="form-group">
                                                 <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
                                             </div>
@@ -149,8 +140,21 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Your feedback on this course</label>
+                                            <form method="POST">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endauth
                         </div>
                     </div>
 

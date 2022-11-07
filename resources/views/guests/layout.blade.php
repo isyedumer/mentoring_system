@@ -68,69 +68,12 @@
                                 </a>
                             </div>
                             <ul class="main-nav">
-                                <li class="active has-submenu">
-                                    <a href="index.html">Home</i></a>
+                                <li class="has-submenu">
+                                    <a href="{{ route('dashboard') }}">Home</i></a>
                                 </li>
                                 <li class="has-submenu">
-                                    <a href="">Mentor <i class="fas fa-chevron-down"></i></a>
-                                    <ul class="submenu">
-                                        <li><a href="dashboard.html">Mentor Dashboard</a></li>
-                                        <li><a href="bookings.html">Bookings</a></li>
-                                        <li><a href="schedule-timings.html">Schedule Timing</a></li>
-                                        <li><a href="mentee-list.html">Mentee List</a></li>
-                                        <li><a href="profile-mentee.html">Mentee Profile</a></li>
-                                        <li class="has-submenu">
-                                            <a href="blog.html">Blog</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-details.html">Blog View</a></li>
-                                                <li><a href="add-blog.html">Add Blog</a></li>
-                                                <li><a href="edit-blog.html">Edit Blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="chat.html">Chat</a></li>
-                                        <li><a href="invoices.html">Invoices</a></li>
-                                        <li><a href="profile-settings.html">Profile Settings</a></li>
-                                        <li><a href="reviews.html">Reviews</a></li>
-                                        <li><a href="mentor-register.html">Mentor Register</a></li>
-                                    </ul>
+                                    <a href="{{ route('appointments.book') }}">Courses</i></a>
                                 </li>
-                                <li class="has-submenu">
-                                    <a href="">Mentee <i class="fas fa-chevron-down"></i></a>
-                                    <ul class="submenu">
-                                        <li class="has-submenu">
-                                            <a href="#">Mentors</a>
-                                            <ul class="submenu">
-                                                <li><a href="map-grid.html">Map Grid</a></li>
-                                                <li><a href="map-list.html">Map List</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="search.html">Search Mentor</a></li>
-                                        <li><a href="profile.html">Mentor Profile</a></li>
-                                        <li><a href="bookings-mentee.html">Bookings</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="booking-success.html">Booking Success</a></li>
-                                        <li><a href="dashboard-mentee.html">Mentee Dashboard</a></li>
-                                        <li><a href="favourites.html">Favourites</a></li>
-                                        <li><a href="chat-mentee.html">Chat</a></li>
-                                        <li><a href="profile-settings-mentee.html">Profile Settings</a></li>
-                                        <li><a href="change-password.html">Change Password</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-submenu">
-                                    <a href="search.html">Search Mentors</i></a>
-                                </li>
-                                <li class="has-submenu">
-                                    <a href="blog-details.html">Blog</i></a>
-                                </li>
-                                <li>
-                                    <a href="admin/index.html" target="_blank">Admin</a>
-                                </li>
-                                @guest
-                                    <li class="login-link">
-                                        <a href="login.html">Login / Signup</a>
-                                    </li>
-                                @endguest
                             </ul>
                         </div>
                         <ul class="nav header-navbar-rht">
@@ -139,7 +82,7 @@
                                     <a class="nav-link header-login-two" href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link header-login" href="register.html">Sign up</a>
+                                    <a class="nav-link header-login" href="{{ route('register') }}">Sign up</a>
                                 </li>
                             @endguest
                             @auth
