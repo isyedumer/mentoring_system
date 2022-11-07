@@ -177,7 +177,7 @@
 
                         </div>
 
-                        <div class="col-lg-3 col-md-6">
+                        {{-- <div class="col-lg-3 col-md-6">
 
                             <!-- Footer Widget -->
                             <div class="footer-widget footer-menu">
@@ -192,9 +192,9 @@
                             </div>
                             <!-- /Footer Widget -->
 
-                        </div>
+                        </div> --}}
 
-                        <div class="col-lg-3 col-md-6">
+                        {{-- <div class="col-lg-3 col-md-6">
 
                             <!-- Footer Widget -->
                             <div class="footer-widget footer-menu">
@@ -209,7 +209,7 @@
                             </div>
                             <!-- /Footer Widget -->
 
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-3 col-md-6">
 
