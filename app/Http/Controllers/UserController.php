@@ -42,7 +42,7 @@ class UserController extends Controller
             $paidUser = true;
         }
         if(!$paidUser && $appointmentsCount > 2) {
-            return redirect()->back()->with(['type' => 'error', 'message' => 'You have reached your appointments limit! Please upgrade your account!')
+            return redirect()->back()->with(['type' => 'error', 'message' => 'You have reached your appointments limit! Please upgrade your account!'])
         }
         $teacherCourse = TeacherCourse::where('course_id', $course->id)->where('user_id', $teacher->id)->first();
         if (!$teacherCourse) {
