@@ -143,9 +143,10 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Your feedback on this course</label>
-                                            <form method="POST">
+                                            <form method="POST" action="{{ route('feedback.post', $teacherCourse->id) }}">
+                                                @csrf
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="question" rows="4" cols="6"></textarea>
+                                                    <textarea class="form-control" name="feedback_text" rows="4" cols="6"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary">Submit</button>

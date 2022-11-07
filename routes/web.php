@@ -76,4 +76,5 @@ Route::middleware(['auth', 'prevent.history'])->group(function() {
     Route::get('teacher/profile/{user}', [ProfileController::class, 'viewTeacherProfile'])->name('teacher.profile');
     Route::get('student/profile/{user}', [ProfileController::class, 'viewStudentProfile'])->name('student.profile');
     Route::post('/queries/{teacherCourse}', [HomeController::class, 'queryPost'])->name('query.post');
+    Route::post('/feedbacks/{teacherCourse}', [HomeController::class, 'feedbackPost'])->name('feedback.post');
 });

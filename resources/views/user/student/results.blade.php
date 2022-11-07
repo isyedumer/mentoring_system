@@ -141,7 +141,7 @@
                             <div class="product">
                                 <div class="product-img">
                                     <a href="{{ route('course.detail',$result->id) }}">
-                                        <img class="img-fluid" alt=""
+                                        <img class="img-fluid" style="height: 300px;" alt=""
                                             src="{{ $result->course->image }}" width="600"
                                             height="300">
                                     </a>
@@ -166,7 +166,7 @@
                                         </div>
                                         <h5>{{ $result->user->name }}</h5>
                                         <div class="course-price" style="float: right;">
-                                            <h4><span>{{ $result->course->price }}</span></h4>
+                                            <h4><span style="text-decoration: none;">${{ $result->course->price }}</span></h4>
                                         </div>
                                     </div>
                                 </div>

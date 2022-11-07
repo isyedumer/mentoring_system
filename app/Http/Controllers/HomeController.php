@@ -90,6 +90,19 @@ class HomeController extends Controller
         return redirect()->back()->with(['type' => 'success', 'message' => 'Question posted successfully!']);
     }
 
+    public function feedbackPost(Request $request, TeacherCourse $teacherCourse)
+    {
+        $validator = Validator::make($request->all(), [
+            'feedback_text' => 'required',
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()]);
+        }
+        $request['student_id'] = auth()->user()->id;
+        $teacherCourse->queries()->create($request->all());
+        return redirect()->back()->with(['type' => 'success', 'message' => 'Feedback posted successfully!']);
+    }
+
     public function addCourse()
     {
         return view('admin.add_course');
