@@ -28,8 +28,11 @@ class AuthController extends Controller
             return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()])->withInput();
         }
         $user = User::firstWhere('email', $request->email);
-        if (!$user->is_active) {
+        if ($user->is_active == 0) {
             return redirect()->back()->with(['type' => 'warning', 'message' => 'Your request is pending approval! You can login to the system once you get approved.'])->withInput();
+        }
+        if ($user->is_active == 2) {
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Your account request have been rejected.'])->withInput();
         }
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials)) {

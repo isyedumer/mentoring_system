@@ -13,6 +13,7 @@ class Course extends Model
         'title',
         'description',
         'image',
+        'price',
     ];
 
     public function teachers()

@@ -20,6 +20,7 @@
 
     <!-- Morris CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/morris/morris.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
@@ -35,10 +36,10 @@
 
             <!-- Logo -->
             <div class="header-left">
-                <a href="index.html" class="logo">
+                <a href="{{ route('dashboard') }}" class="logo">
                     <img src="{{ asset('assets/admin/img/logo.png') }}" alt="Logo">
                 </a>
-                <a href="index.html" class="logo logo-small">
+                <a href="{{ route('dashboard') }}" class="logo logo-small">
                     <img src="{{ asset('assets/admin/img/logo-small.png') }}" alt="Logo" width="30"
                         height="30">
                 </a>
@@ -50,10 +51,10 @@
             </a>
 
             <div class="top-nav-search">
-                <form>
+                {{-- <form>
                     <input type="text" class="form-control" placeholder="Search here">
                     <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                </form> --}}
             </div>
 
             <!-- Mobile Menu Toggle -->
@@ -66,7 +67,7 @@
             <ul class="nav user-menu">
 
                 <!-- Notifications -->
-                <li class="nav-item dropdown noti-dropdown">
+                {{-- <li class="nav-item dropdown noti-dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <i class="fe fe-bell"></i> <span class="badge badge-pill">3</span>
                     </a>
@@ -149,29 +150,27 @@
                             <a href="#">View all Notifications</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <!-- /Notifications -->
 
                 <!-- User Menu -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                        <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-12.jpg"
-                                width="31" alt="Ryan Taylor"></span>
+                        <span class="user-img"><img class="rounded-circle" src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                                width="31" alt="User Image"></span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="assets/img/profiles/avatar-12.jpg" alt="User Image"
+                                <img src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" alt="User Image"
                                     class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
-                                <h6>Ajay Kuamr</h6>
-                                <p class="text-muted mb-0">Administrator</p>
+                                <h6>{{ auth()->user()->name }}</h6>
+                                <p class="text-muted mb-0">{{ auth()->user()->role->title }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->
@@ -188,8 +187,11 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Dashboard</li>
+                        <li class="@yield('dashboard_active')">
+                            <a href="{{ route('dashboard') }}"><span>Dashboard</span></a>
+                        </li>
                         <li class="@yield('login_requests_active')">
-                            <a href="mentor.html"><span>Login Requests</span></a>
+                            <a href="{{ route('login.requests') }}"><span>Login Requests</span></a>
                         </li>
                         <li class="@yield('teacher_active')">
                             <a href="{{ route('teachers') }}"><span>Teachers</span></a>
@@ -225,6 +227,9 @@
     <!-- Slimscroll JS -->
     <script src="{{ asset('assets/admin/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
+    <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/datatables.min.js') }}"></script>
+
     <!-- Raphael JS -->
     <script src="{{ asset('assets/admin/plugins/raphael/raphael.min.js') }}"></script>
 
@@ -236,6 +241,19 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/admin/js/script.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        @if (Session::has('type'))
+            @if (session('type') == 'success')
+                toastr.success(@json(session('message')))
+            @elseif (session('type') == 'error')
+                toastr.error(@json(session('message')))
+            @elseif (session('type') == 'warning')
+                toastr.warning(@json(session('message')))
+            @endif
+        @endif
+    </script>
 
     @yield('scripts')
 

@@ -46,7 +46,7 @@
 
                                                 <td class="text-center">{{ $user->created_at->diffForHumans() }}</td>
 
-                                                <td class="text-center">{{ $user->is_active ? 'Active' : 'In-active' }}</td>
+                                                <td class="text-center">{{ ($user->is_active == 1 ? 'Active' : ($user->is_active == 0 ? 'Pending' : ($user->is_active == 2 ? 'Rejected': 'N/A'))) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

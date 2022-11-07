@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender', ['M', 'F']);
             $table->enum('subscription', ['free', 'paid']);
-            $table->enum('is_active', ['0', '1'])->default('0');
+            $table->enum('is_active', ['0', '1', '2'])->default('0');
             $table->unsignedBigInteger('role_id');
             $table->rememberToken();
             $table->timestamps();

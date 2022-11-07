@@ -100,4 +100,26 @@ class UserController extends Controller
         $teacherCourse = TeacherCourse::where('user_id', $studentTeacherAppointment->teacher->id)->where('course_id', $studentTeacherAppointment->course->id)->first();
         return view('user.student.materials', compact('teacherCourse'));
     }
+
+    public function login_requests()
+    {
+        $users = User::where('is_active', '0')->get();
+        return view('admin.login_requests', compact('users'));
+    }
+
+    public function acceptRequest(User $user)
+    {
+        $user->update([
+            'is_active' => '1',
+        ]);
+        return redirect()->back()->with(['type' => 'success', 'message' => 'Login request accepted successfully!']);
+    }
+
+    public function rejectRequest(User $user)
+    {
+        $user->update([
+            'is_active' => '2',
+        ]);
+        return redirect()->back()->with(['type' => 'error', 'message' => 'Login request rejected successfully!']);
+    }
 }

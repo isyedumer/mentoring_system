@@ -2,6 +2,8 @@
 
 @section('course_active', 'active')
 
+@section('title', 'Courses')
+
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -18,7 +20,7 @@
                         </ul>
                     </div>
                     <div class="col-sm-6">
-                        <a class="btn btn-primary pull-right">New Course</a>
+                        <a href="{{ route('courses.add') }}" class="btn btn-primary pull-right">New Course</a>
                     </div>
                 </div>
             </div>
@@ -42,14 +44,14 @@
                                     <tbody>
                                         @foreach ($courses as $course)
                                             <tr>
-                                                <td class="text-center">
-                                                    {{ $course->title }}
+                                                <td>
+                                                    <img src="{{ $course->image }}" height="50" width="50" /> {{ $course->title }}
                                                 </td>
                                                 <td class="text-center">{{ $course->desc }}</td>
 
                                                 <td class="text-center">{{ $course->created_at->diffForHumans() }}</td>
 
-                                                <td class="text-center"><a href="profile-mentee.html" class="btn btn-sm bg-info-light"><i class="fa fa-edit"></i> Edit</a></td>
+                                                <td class="text-center"><a href="{{ route('courses.edit', $course->id) }}" class="btn btn-sm bg-info-light"><i class="fa fa-edit"></i> Edit</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

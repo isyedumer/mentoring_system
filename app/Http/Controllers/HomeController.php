@@ -7,6 +7,7 @@ use App\Models\StudentTeacherAppointment;
 use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -87,5 +88,58 @@ class HomeController extends Controller
         $request['student_id'] = auth()->user()->id;
         $teacherCourse->queries()->create($request->all());
         return redirect()->back()->with(['type' => 'success', 'message' => 'Question posted successfully!']);
+    }
+
+    public function addCourse()
+    {
+        return view('admin.add_course');
+    }
+
+    public function saveCourse(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'img' => 'required'
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()])->withInput();
+        }
+        if ($request->hasFile('img')) {
+            $uploaded = $request->file('image');
+            $file = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
+            $uploaded->storeAs('courses', $file, 'public');
+            $url = url("/storage/courses/" . $file);
+            $request['image'] = $url;
+        }
+        $course = Course::create($request->all());
+        return redirect(route('courses'))->with(['type' => 'success', 'message' => 'Course added successfully!']);
+    }
+
+    public function editCourse(Course $course)
+    {
+        return view('admin.edit_course', compact('course'));
+    }
+
+    public function updateCourse(Request $request, Course $course)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->with(['type' => 'error', 'message' => $validator->errors()->first()])->withInput();
+        }
+        if ($request->hasFile('img')) {
+            $uploaded = $request->file('image');
+            $file = date('His') . '-' . Str::random(10) . '.' . $uploaded->getClientOriginalExtension();
+            $uploaded->storeAs('courses', $file, 'public');
+            $url = url("/storage/courses/" . $file);
+            $request['image'] = $url;
+        }
+        $course->update($request->all());
+        return redirect(route('courses'))->with(['type' => 'success', 'message' => 'Course updated successfully!']);
     }
 }
