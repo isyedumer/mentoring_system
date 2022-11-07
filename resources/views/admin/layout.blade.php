@@ -20,9 +20,12 @@
 
     <!-- Morris CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/plugins/morris/morris.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/user/css/user.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
 </head>
 
@@ -156,21 +159,27 @@
                 <!-- User Menu -->
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                        <span class="user-img"><img class="rounded-circle" src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                        <span class="user-img"><img class="rounded-circle"
+                                src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
                                 width="31" alt="User Image"></span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}" alt="User Image"
-                                    class="avatar-img rounded-circle">
+                                <img src="{{ auth()->user()?->additional?->profile_image ? auth()->user?->additional?->profile_image : 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png' }}"
+                                    alt="User Image" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ auth()->user()->name }}</h6>
                                 <p class="text-muted mb-0">{{ auth()->user()->role->title }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                        <a class="dropdown-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="nav-link-btn" type="submit">Log out</button>
+                            </form>
+                        </a>
                     </div>
                 </li>
                 <!-- /User Menu -->
@@ -241,7 +250,9 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/admin/js/script.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         @if (Session::has('type'))

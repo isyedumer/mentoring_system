@@ -36,7 +36,8 @@
                                 <div class="col-2">
                                     <div class="booking-user-info">
                                         <div class="profile-img" style="height: 200px; width: 200px;">
-                                            <img style="width: 180px; height: 180px;" src="{{ $teacherCourse->course->image }}" width="100" height="100" />
+                                            <img style="width: 180px; height: 180px;"
+                                                src="{{ $teacherCourse->course->image }}" width="100" height="100" />
                                         </div>
                                     </div>
                                 </div>
@@ -50,8 +51,10 @@
                                             {{ $teacherCourse->user?->additional?->city ? $teacherCourse->user?->additional?->city . ',' : '' }}
                                             {{ $teacherCourse->user?->additional?->country ? $teacherCourse->user?->additional?->country : '' }}
                                         </p>
-                                        <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
-                                            class="btn btn-primary">Book an appointment</a>
+                                        @if (auth()->user()->role->type == 'student')
+                                            <a href="{{ route('appointments.make', [$teacherCourse->course->id, $teacherCourse->user->id]) }}"
+                                                class="btn btn-primary">Book an appointment</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
